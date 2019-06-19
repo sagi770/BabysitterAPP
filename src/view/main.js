@@ -4,12 +4,7 @@ import ParentList from '../components/main/parentList';
 
 const Main = ({user, sc, parents,}) => {
  
-   
-
-
-
-
-
+  
   return (<div>
             <ParentList/>
             <AddParent/>
