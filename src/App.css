@@ -1,0 +1,25 @@
+.parIcon{
+  width: 100px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 15%;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  float: left;
+}
+
+.parList {
+  width: 350px;
+  overflow: hidden;
+  border: 2px solid black;
+
+}
+.btnAddAParent{
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+
+}
