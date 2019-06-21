@@ -8,7 +8,15 @@
   padding: 10px;
   float: left;
 }
+.scrinExampel{
+  width: 380px;
+  float: center;
+  overflow: hidden;
+  box-shadow:  0px 3px 15px -8px #888888;
+  margin: 40px 15% 20px 15%;
+  padding: 10px;
 
+}
 .parList {
   width: 350px;
   overflow: hidden;
