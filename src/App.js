@@ -6,6 +6,7 @@ import MenuNC from './components/NC/mainNC/menuNC';
 import Login from './view/notConnected/login';
 import Main from './view/main';
 import Signup from './view/notConnected/signup';
+import Forget from './view/notConnected/forget';
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
           <Signup/>
               <Link class="btn" to="/signup/b">signup</Link>
               </div>
+          <div class="scrinExampel">
+          <Forget/>
+              <Link class='' to="/forget/sendEmail ">send</Link>
+          </div>
         </Router>
 
 
