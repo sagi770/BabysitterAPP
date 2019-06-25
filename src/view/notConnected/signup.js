@@ -12,7 +12,7 @@ const Signup = ({user, sc, parents,}) => {
       <h3>Password</h3>
       <input class='inp' type='password'/>
       {/* <Link class="btn" to="/signup/b">login</Link> */}
-        </div>);
+        </div>)
 }
 
 export default Signup;

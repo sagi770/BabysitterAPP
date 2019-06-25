@@ -9,6 +9,7 @@ import Signup from './view/notConnected/signup';
 import Forget from './view/notConnected/forget';
 import AddParent from './components/main/addParent';
 import AddPar from './components/main/babyconnect/addParent';
+import Setting from './components/main/babyconnect/setting';
 
 
 function App() {
@@ -21,6 +22,13 @@ function App() {
                 <AddPar/>
                 <Link class="lincbtn" to="/addParent">add</Link> |  
             </div>
+            <div class="scrinExampel">
+                <Setting/>
+                <Link class="lincbtn" to="/addFrice">add</Link> |  
+            </div>
+            <div class="scrinExampel"></div>
+
+            
                 <div class="scrinExampel">
                 <Link class="lincbtn" to="/nc1">login</Link> |  
               <Link class="lincbtn" to="/nc2"> signup</Link>
@@ -39,6 +47,8 @@ function App() {
           <Forget/>
               <Link class='lincbtn' to="/forget/sendEmail ">send</Link>
           </div>
+          <div class="scrinExampel"></div>
+
         </Router>
 
 
