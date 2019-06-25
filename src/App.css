@@ -1,24 +1,38 @@
+div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: center;
+
+}
 .parIcon{
-  width: 100px;
+  width: 80%;
   height: 40px;
   border: 2px solid black;
-  border-radius: 15%;
+  border-radius: 15px;
   text-align: center;
   margin: 20px;
   padding: 10px;
   float: left;
 }
 .scrinExampel{
-  width: 380px;
-  float: center;
-  overflow: hidden;
-  box-shadow:  0px 3px 15px -8px #888888;
-  margin: 40px 15% 20px 15%;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+    overflow: hidden;
+  box-shadow:  0px 3px 15px -4px #888888;
+  margin-top: 10%;
   padding: 10px;
 
 }
 .parList {
-  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  width: 95%;
   overflow: hidden;
   border: 2px solid black;
 
@@ -30,4 +44,30 @@
   border-radius: 50%;
   text-align: center;
 
+}
+
+input{
+  width: 75%;
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 200%;
+  border-radius: 10px;
+
+
+}
+.lincbtn{
+  width: 20%;
+  padding: 2%;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 2px solid rgb(27, 41, 230);
+  background-color: blue;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
 }
