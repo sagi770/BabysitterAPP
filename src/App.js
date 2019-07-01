@@ -9,11 +9,15 @@ import Signup from './view/notConnected/signup';
 import Forget from './view/notConnected/forget';
 import AddParent from './components/main/addParent';
 import AddPar from './components/main/babyconnect/addParent';
+import testAJAX from './components/testAJAX';
 
 
 function App() {
   return (<div>
         <Router>
+            <div>
+                <Route path="/ajax" component={testAJAX} />
+            </div>
           <div class="scrinExampel">
           <Main/>
           </div>
