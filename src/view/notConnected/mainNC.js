@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 
 const MainNC = ({user, sc, parents,}) => {
  
-  
-  return (<div>
+  return (<div className="screenExample">
+            <Link className="linkBtn" to="/nc1">login</Link>  
+            <Link className="linkBtn" to="/nc2"> signup</Link>
+            
             <MenuNC/>
             <InfoNC/>
         </div>);
