@@ -6,11 +6,11 @@ import LinkSetting from './../components/main/linkToSetting';
 const Main = ({user, sc, parents,}) => {
  
   
-  return (<div>
-            <LinkSetting/>
-            <ParentList/>
-            <AddParent/>
-        </div>);
+  return (<div className="screenExample">
+              <LinkSetting/>
+              <ParentList/>
+              <AddParent/>
+          </div>);
 }
 
 export default Main;

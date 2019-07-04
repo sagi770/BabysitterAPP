@@ -1,3 +1,11 @@
+.align-left{
+  text-align: left
+}
+
+.informationImage{
+  width:100%
+}
+
 div{
   display: block;
   margin-left: auto;
@@ -16,7 +24,7 @@ div{
   padding: 10px;
   float: left;
 }
-.scrinExampel{
+.screenExample{
   width: 90%;
   display: block;
   margin-left: auto;
@@ -57,7 +65,10 @@ input{
 
 
 }
-.lincbtn{
+.linkBtn{
+  /* remove this margin..*/
+  margin-top:10px;
+
   width: 20%;
   padding: 2%;
   text-align: center;

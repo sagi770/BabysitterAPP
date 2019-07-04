@@ -1,53 +1,45 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import MainNC from './view/notConnected/mainNC';
-import MenuNC from './components/NC/mainNC/menuNC';
-import Login from './view/notConnected/login';
 import Main from './view/main';
-import Signup from './view/notConnected/signup';
-import Forget from './view/notConnected/forget';
-import AddParent from './components/main/addParent';
-import AddPar from './components/main/babyconnect/addParent';
+import AddParent from './components/main/babyconnect/addParent';
 import testAJAX from './components/testAJAX';
+import Test from './components/test';
+import Navigation from './components/navigation';
+import MainNC from './view/notConnected/mainNC';
+import Login from './view/notConnected/login';
+import Signup from './view/notConnected/signup';
+import ForgetPassword from './view/notConnected/forgetPassword';
+
+//maybe we need to move this components...
+import ParentView from './components/parentView';
+
+// import TempPager from './components/TempPager';
+
+//Not been use yet:
+// import MenuNC from './components/NC/mainNC/menuNC';
+
 
 
 function App() {
-  return (<div>
-        <Router>
-            <div>
-                <Route path="/ajax" component={testAJAX} />
-            </div>
-          <div class="scrinExampel">
-          <Main/>
-          </div>
-          <div class="scrinExampel">
-                <AddPar/>
-                <Link class="lincbtn" to="/addParent">add</Link> |  
-            </div>
-                <div class="scrinExampel">
-                <Link class="lincbtn" to="/nc1">login</Link> |  
-              <Link class="lincbtn" to="/nc2"> signup</Link>
-          <MainNC/>
-          </div>
-          <div class="scrinExampel">
-          <Login/>
-              <Link class="lincbtn" to="/login/b">login</Link> | 
-              <Link class='lincbtn' to="/login/forget ">forget my password link</Link>
-          </div>
-          <div class="scrinExampel">
-          <Signup/>
-              <Link class="lincbtn" to="/signup/b">signup</Link>
-              </div>
-          <div class="scrinExampel">
-          <Forget/>
-              <Link class='lincbtn' to="/forget/sendEmail ">send</Link>
-          </div>
-        </Router>
+    return (<div>
+                <Router>
+                    <Navigation/>
+                
+                    
+                    {/* Test ajax call.. */}
+                    <Route exact path="/ajax" component={testAJAX} />
+                    <Route exact path="/test" component={Test} />
 
-
-    
-    </div>);
+                    <Route exact path="/" component={Main} />
+                    <Route path="/add-parent" component={AddParent} />
+                    <Route path="/parent/:id" component={ParentView} />
+                    <Route path="/main-nc" component={MainNC} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/signup" component={Signup} />
+                    <Route path="/forget-password" component={ForgetPassword} />
+                </Router>
+            </div>);
 }
 
 export default App;

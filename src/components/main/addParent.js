@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 
 const AddParent = () => {
  
-   
-
-
-
-
-
-  return (<Link to="/addAParent"><div class='btnAddAParent'>+</div>
-  </Link>);
+  return (<Link to="/addAParent">
+            <div className='btnAddAParent'>+</div>
+        </Link>);
 }
 
 export default AddParent;
