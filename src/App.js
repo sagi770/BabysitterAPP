@@ -18,7 +18,7 @@ import ParentView from './components/parentView';
 // import TempPager from './components/TempPager';
 
 //Not been use yet:
-// import MenuNC from './components/NC/mainNC/menuNC';
+// import MenuNotConnected from './components/NC/mainNC/menuNC';
 
 
 
@@ -31,6 +31,8 @@ function App() {
                     {/* Test ajax call.. */}
                     <Route exact path="/ajax" component={testAJAX} />
                     <Route exact path="/test" component={Test} />
+
+{/* TODO:add Setting component */}
 
                     <Route exact path="/" component={Main} />
                     <Route path="/add-parent" component={AddParent} />
