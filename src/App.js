@@ -19,12 +19,15 @@ import ParentView from './components/parentView';
 
 //Not been use yet:
 // import MenuNC from './components/NC/mainNC/menuNC';
+import DropDown from './components/addParentRows';
 
 
 
 function App() {
     return (<div>
                 <Router>
+                <DropDown/>
+
                     <Navigation/>
                 
                     
