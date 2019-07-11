@@ -11,3 +11,98 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.align-left{
+  text-align: left
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.linkBtn{
+  /* remove this margin..*/
+  margin-top:10px;
+
+  width: 20vw;
+  padding: 2%;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 2px solid rgb(27, 41, 230);
+  background-color: blue;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.grayBtn{
+  background:gray;
+  border: 2px solid gray;
+}
+.informationImage{
+  width:100%
+}
+
+div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.parIcon{
+  width: 80%;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 15px;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  float: left;
+}
+.screenExample{
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+    overflow: hidden;
+  box-shadow:  0px 3px 15px -4px #888888;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 10px;
+
+}
+.parList {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  width: 95%;
+  overflow: hidden;
+  border: 2px solid black;
+
+}
+.btnAddAParent{
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+
+}
+
+input{
+  width: 75%;
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 200%;
+  border-radius: 10px;
+}
+
