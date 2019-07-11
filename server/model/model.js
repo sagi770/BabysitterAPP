@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
+const validator = require('validator')
 const  Schema  = mongoose.Schema;
 
 const babysitterSchema = new Schema({
     users: {
         name: String,
         password: String,
-        phone: String,
+        phone:  {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            validate: (value) => {
+                return validator.blacklist(value)
+            }
+        },
         pricePerHour: String,
         setting:{
             hourPrice: String,
@@ -25,7 +34,7 @@ const babysitterSchema = new Schema({
 })
 
 
-const Babysitter = mongoose.model('Babysitter', babysitterSchema);
+const Babysitter = mongoose.model('BabysitterVal', babysitterSchema);
 
 module.exports = {
     Babysitter
