@@ -5,6 +5,7 @@ const AddParent = ({user, sc, parents,}) => {
  
   
   return (<div className="screenExample">
+            <h3 className="underline">Add Parent</h3>
             <h3>Full Name</h3>
             <input className='inp' type='text' />
             <h3>phone</h3>

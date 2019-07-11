@@ -17,12 +17,14 @@ class Navigation extends Component {
         return ( 
             <select onChange={this.onChange}>
                 <option value="">Choose one..</option>
-                <option value="">Home page</option>
-                <option value="add-parent">Add Perent</option>
-                <option value="main-nc">Main</option>
+                <option value="">Parent List</option>
+                <option value="add-parent">Add Parent</option>
+                <option value="add-parent-row">Add Parent Row</option>
+                <option value="home-page">Home page</option>
                 <option value="login">Login</option>
                 <option value="signup">Signup</option>
                 <option value="forget-password">Forget Password</option>
+                <option value="setting">Setting</option>
             </select>
          );
     }

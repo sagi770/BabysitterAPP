@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfoNC = ({title, image, text1, text2}) => {
+const HomePage = ({title, image, text1, text2}) => {
         title = title || "לורם איפסום"
         image = image || "http://placehold.it/300x200"
         text1 = text1 || "לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק."
@@ -14,4 +14,4 @@ const InfoNC = ({title, image, text1, text2}) => {
         </div>);
 }
 
-export default InfoNC;
+export default HomePage;

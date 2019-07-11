@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Signup = ({user, sc, parents,}) => {
+const Setting = ({user, sc, parents,}) => {
 
 return (<div className="screenExample">
           <h3>Name</h3>
@@ -10,8 +10,8 @@ return (<div className="screenExample">
           <input className='inp' type='email' />
           <h3>Password</h3>
           <input className='inp' type='password'/>
-          <Link className="linkBtn" to="">signup</Link>
+          <Link className="linkBtn" to="">Save changes</Link>
       </div>);
 }
 
-export default Signup;
+export default Setting;

@@ -17,7 +17,6 @@ export default class PersonList extends React.Component {
     
     render() {
       
-      console.log(111);
       console.log(this.state.persons);
     return (
       <ul>

@@ -1,15 +1,12 @@
 import React, { Component }  from 'react';
 import '../css/table.css';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import AddRowForParent from '.view/input/addParentRows';
 
 class ParentView extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
-
-        
-        
     }
     
     state = { 
@@ -24,12 +21,13 @@ class ParentView extends Component {
     render() { 
         console.log(this.state);
 
-        const header = ["Action", "Total", "To","From" ,"Date" ];
+        const header = ["Date", "From" ,  "To", "Total","Action" ];
 
         return ( 
+            
             <div>
-                <div class="linkBtn">Back to parents list</div>
-                <div class="linkBtn">Mark as paid</div>
+                <div className="linkBtn gray">Back to parents list</div>
+                <div className="linkBtn">Mark as paid</div>
                 <h3 className="align-left">Parent name: {this.state.parent.name}</h3>
 
                 <table className="table">
@@ -41,11 +39,11 @@ class ParentView extends Component {
                         let data = this.state.parentRows[k];
                         return (
                             <tr key={i}>
-                                <td>B</td>
-                                <td>A</td>
-                                <td>{data.to}</td>
-                                <td>{data.from}</td>
                                 <td>{data.date}</td>
+                                <td>{data.from}</td>
+                                <td>{data.to}</td>
+                                <td>A</td>
+                                <td>B</td>
                             </tr>
                         );
                         })}
@@ -54,6 +52,7 @@ class ParentView extends Component {
 
                 <h3  className="align-left">Total Time: 21..</h3>
                 <h3  className="align-left">Total Sum: 25..</h3>
+                
             </div>
          );
     }
