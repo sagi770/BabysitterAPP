@@ -8,53 +8,7 @@ route.get('/', (req, res) => {
             res.json('Babysitters');
         })
 
-route.get('/fff', (req, res) => {
 
-   
-   mongoose.model('Babysitter').schema.add({
-    Babysitter:{users: {parents:[{name : 'String',
-        phone : 'String',
-        password: 'String',
-        hourList: [{
-            startDate: 'String',
-            endDate: 'String',
-            isPaid: false,
-            isDelete: false,
-        }]},{name : 'String',
-        phone : 'String',
-        password: 'String',
-        hourList: [{
-            startDate: 'String',
-            endDate: 'String',
-            isPaid: false,
-            isDelete: false,
-        }]},{name : 'String',
-        phone : 'String',
-        password: 'String',
-        hourList: [{
-            startDate: 'String',
-            endDate: 'String',
-            isPaid: false,
-            isDelete: false,
-        }]},{name : 'String',
-        phone : 'String',
-        password: 'String',
-        hourList: [{
-            startDate: 'String',
-            endDate: 'String',
-            isPaid: false,
-            isDelete: false,
-        }]}]}}
-      });
-            res.json('Babysitters');
-            babysitter.save()
-            .then(babysitter => {
-                res.json(babysitter);
-            }).catch(err => {
-                console.error(err);
-                res.status(500).json({ message: 'Error on add new babysitter' })
-            });
-        })
 
 route.get('/babysitter', (req, res) => {
     Babysitter.find()
