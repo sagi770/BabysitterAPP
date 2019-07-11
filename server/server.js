@@ -4,71 +4,27 @@ const bodyParser    = require("body-parser");
 const mongoose      = require("mongoose");
 const port          = 4000;
 const app           = express();
+const { route }         = require('./model/router')
+const { Babysitter }         = require('./model/model')
 
 
-mongoose.connect('mongodb://localhost:27017/babysitter', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/babysitter', {useNewUrlParser: true})
+.then(() => {
+    console.log('Connect to db');
+})
+.catch(err => {
+    console.error(err);
+});
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const babysitter = mongoose.model('app', { 
-    users: {
-        name: String,
-        password: String,
-        phone: String,
-        pricePerHour: String,
-        setting:{
-            hourPrice: String
-        },
-        parents: [{
-            name : String,
-            phone : String,
-            password: String,
-            hourList: [{
-                startDate: String,
-                endDate: String,
-                isPaid: Boolean,
-                isDelete: Boolean,
-            }]
-        }]
-    },
-});
-
-
-
-app.get('/:email/:name', (req,res)=>{
-    let { email, name } = req.params;
-
-    const user = new babysitter({ 
-        users: {
-            name,
-            email,
-        }
-     });
-     user.save().then(() => console.log('meow'));
-    res.send(user)
-})
-
-// insert parent
-// app.get('/user/:id', (req,res) => {
-//     let { email, name } = req.params;
-
-//     const user = new babysitter({ 
-//         users: {
-//             parents: {
-//                 name,
-//                 email
-//             }
-//         }
-//      });
-//      user.save().then(() => console.log('meow'));
-//     res.send(user)
-// })
+    
+ app.use(Babysitter)
+app.use(route)
 
 
 
 app.listen(port, ()=>{
     console.log('server up on ' + port);
 })
-
-
