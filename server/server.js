@@ -14,21 +14,21 @@ app.use(cors());
 const babysitter = mongoose.model('app', { 
     users: {
         name: String,
-        email: String,
         password: String,
         phone: String,
+        pricePerHour: String,
         setting:{
             hourPrice: String
         },
         parents: [{
             name : String,
             phone : String,
+            password: String,
             hourList: [{
                 startDate: String,
-                startTime: String,
                 endDate: String,
-                endTime: String,
-                isDelete: String,
+                isPaid: Boolean,
+                isDelete: Boolean,
             }]
         }]
     },
