@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const  Schema  = mongoose.Schema;
 
-const babysitter = new Schema({
+const babysitterSchema = new Schema({
     users: {
         name: String,
         password: String,
         phone: String,
         pricePerHour: String,
         setting:{
-            hourPrice: String
+            hourPrice: String,
         },
         parents: [{
             name : String,
@@ -25,7 +25,7 @@ const babysitter = new Schema({
 })
 
 
-const Babysitter = mongoose.model('app', babysitter);
+const Babysitter = mongoose.model('Babysitter', babysitterSchema);
 
 module.exports = {
     Babysitter
