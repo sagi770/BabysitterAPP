@@ -1,12 +1,12 @@
-const express = require('express');
-const route = express.Router()
-const { Babysitter } = require('./model');
-const mongoose =require("mongoose");
+const express       = require('express');
+const route         = express.Router()
+const {Babysitter}  = require('./model');
+const mongoose      = require("mongoose");
+const { route2 }    = require('./router2')
 
 route.get('/', (req, res) => {
-    
-            res.json('Babysitters');
-        })
+    res.json('Babysitters');
+})
 
 
 
@@ -16,19 +16,16 @@ route.get('/babysitter', (req, res) => {
             res.json(Babysitters);
         }).catch(err => {
             console.error(err);
+            console.log(err);
             res.status(500).json({ message: 'Error on get all Babysitters' })
         })
 });
+
 route.post('/babysitter/create-user', (req, res) => {
     let {name, phone, password} = req.body.newUser
     
-
     const babysitter = new Babysitter({
-        users:{
-            name: name,
-             phone: phone,
-              password: password
-        }
+        users:{name, phone, password}
     });
 
     babysitter.save()
@@ -36,11 +33,11 @@ route.post('/babysitter/create-user', (req, res) => {
             res.json(babysitter);
         }).catch(err => {
             console.error(err);
+            console.log(err);
             res.status(500).json({ message: 'Error on add new babysitter' })
         });
-
-    
 });
+
 route.get('/babysitter/create-user', (req, res) => {
     const {phone, password } = req.body
     Babysitter.find({
@@ -54,4 +51,4 @@ route.get('/babysitter/create-user', (req, res) => {
 })
 
 
-module.exports = {route}
+module.exports = {route,route2}

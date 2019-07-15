@@ -4,7 +4,7 @@ const bodyParser    = require("body-parser");
 const mongoose      = require("mongoose");
 const port          = 4000;
 const app           = express();
-const { route }         = require('./model/router')
+const { route,route2 }         = require('./model/router')
 
 
 mongoose.connect('mongodb://localhost:27017/babysitter', {useNewUrlParser: true})
@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(route)
+app.use(route2)
 
 
 
