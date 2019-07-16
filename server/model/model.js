@@ -43,6 +43,7 @@ const ParentSchema = new Schema({
     phone : String,
     password: String,
     hourList: [{
+        date: String,
         startDate: String,
         endDate: String,
         isPaid: Boolean,

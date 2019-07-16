@@ -1,7 +1,8 @@
 const express                           = require('express');
 const route                             = express.Router()
 const { Babysitter, Parent, HourList }  = require('./model');
-const { route2 }                        = require('./router2')
+const { route2 }                        = require('./router2');
+const { viewRoute  }                        = require('./viewRouter');
 
 
 // create new row parent
@@ -91,7 +92,7 @@ route.post('/babysitter/create-user', (req, res) => {
     
     const babysitter = new Babysitter({
         name, phone, password,
-        // 
+        
         pricePerHour: String,
         setting:{
             hourPrice: String,
@@ -113,4 +114,4 @@ route.post('/babysitter/create-user', (req, res) => {
 
 
 
-module.exports = {route,route2}
+module.exports = {route, route2, viewRoute}
