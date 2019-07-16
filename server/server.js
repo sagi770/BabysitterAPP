@@ -1,10 +1,10 @@
-const express       = require("express");
-const cors          = require("cors");
-const bodyParser    = require("body-parser");
-const mongoose      = require("mongoose");
-const port          = 4000;
-const app           = express();
-const { route,route2 }         = require('./model/router')
+const express            = require("express");
+const cors               = require("cors");
+const bodyParser         = require("body-parser");
+const mongoose           = require("mongoose");
+const port               = 4000;
+const app                = express();
+const { route, route2 }  = require('./model/router')
 
 
 mongoose.connect('mongodb://localhost:27017/babysitter', {useNewUrlParser: true})

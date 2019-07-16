@@ -54,6 +54,7 @@ const ParentSchema = new Schema({
 // hour schema
 
 const HourListSchema = new Schema({
+        date: String,
         startDate: String,
         endDate: String,
         isPaid: Boolean,

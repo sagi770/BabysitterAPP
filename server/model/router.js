@@ -1,14 +1,41 @@
-const express                     = require('express');
-const route                       = express.Router()
-const { Babysitter, Parent, HourList }      = require('./model');
-const { route2 }                  = require('./router2')
+const express                           = require('express');
+const route                             = express.Router()
+const { Babysitter, Parent, HourList }  = require('./model');
+const { route2 }                        = require('./router2')
+
+
+// create new row parent
+// -----return { n: 0, nModified: 0, ok: 1 }
+//  min: not found Schema (not becks the schema not will )
+route.post('/add-parent-row', (req, res)=>{
+    //////////// wear need to think about the wey the we ar get this param
+    let userPhone = "08880880"
+    const { date, start, end, } = req.body.row;
+    
+    const hour = new HourList({
+        date: date,
+        startDate: start,
+        endDate: end,
+        isPaid: false,
+        isDelete: false,
+    })
+    
+    Babysitter.updateOne({ "parent.$.phone": userPhone},
+     {$push:{"parents.hourList": hour}}
+     )
+    .then(parent=>{
+        console.log(parent)
+        res.json(parent)})
+    .catch(err=>console.log(err, 'יתחולש'))
+ 
+})
 
 
 // create new parent
 
 route.post('/add-parent', (req, res)=>{
     //////////// wear need to think about the wey the we ar get this param
-    let userPhone = "7777"
+    let userPhone = "08770770"
     const { name, phone, } = req.body.parent;
     
     const parent = new Parent({
@@ -16,13 +43,14 @@ route.post('/add-parent', (req, res)=>{
         phone,
 
         password: String,
-        hourList: [HourList],
+        hourList: [],
     })
     Babysitter.updateOne({ phone: userPhone}, {$push:{parents: parent}})
     .then(parent=>res.json(parent))
     .catch(err=>console.log(err))
  
 })
+
 
 
 
