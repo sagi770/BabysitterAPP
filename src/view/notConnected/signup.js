@@ -6,11 +6,11 @@ class Signup extends React.Component {
     constructor(props){
     super(props);
     this.state ={
-        newUser:{
+       
             name: "testName",
             phone: "testPhone",
             password: "testPassword",
-        }
+    
         
     }
     this.url = "http://localhost:4000"
@@ -29,23 +29,23 @@ axios.post(this.url + '/babysitter/create-user', { newUser })
     render(){
 return (<div className="screenExample">
           <h3>Name</h3>
-          <input className='inp' type='text' value={this.state.newUser.name}
+          <input className='inp' type='text' value={this.state.name}
           onChange={
-              event =>this.setState({newUser:{name: event.target.value}})
+              event =>this.setState({name: event.target.value})
           } />
           <h3>Phone</h3>
-          <input className='inp' type='text' value={this.state.newUser.phone}
+          <input className='inp' type='text' value={this.state.phone}
           onChange={
-              event =>this.setState({newUser:{phone: event.target.value}})
+              event =>this.setState({phone: event.target.value})
           }/>
           <h3>Password</h3>
-          <input className='inp' type='password' value={this.state.newUser.password}
+          <input className='inp' type='password' value={this.state.password}
           onChange={
-              event =>this.setState({newUser:{password: event.target.value}})
+              event =>this.setState({password: event.target.value})
           }/>
           <Link className="linkBtn" to="" 
           onClick={
-              ()=>this.addNewUser(this.state.newUser)
+              ()=>this.addNewUser(this.state)
           }>signup</Link>
       </div>);
 }

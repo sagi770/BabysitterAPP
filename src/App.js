@@ -30,13 +30,13 @@ function App() {
 {/* TODO:add Setting component */}
 
                     <Route exact path="/:user_id" component={Main} />
-                    <Route path="/:user_id/add-parent" component={addParent} />
+                    <Route path="/add-parent" component={addParent} />
                     <Route path="/:user_id/add-parent-row" component={AddRowForParent} />
                     <Route path="/:user_id/parent/:parent_id" component={ParentView} />
                     <Route path="/:user_id/setting" component={Setting} />
                     
                     {/* NOT CONNECTED */}
-                    <Route path="/" component={MainNotConnected} />
+                    <Route exact path="/" component={MainNotConnected} />
                     <Route path="/login" component={Login} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/forget-password" component={ForgetPassword} />
