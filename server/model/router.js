@@ -1,8 +1,19 @@
+require('custom-env').env()
 const express                           = require('express');
 const route                             = express.Router()
 const { Babysitter, Parent, HourList }  = require('./model');
-const { route2 }                        = require('./router2');
 const { viewRoute  }                        = require('./viewRouter');
+
+
+
+// get user by ID 
+route.get("/:user_id", (req, res)=>{
+    const _id = req.params.user_id; 
+    Babysitter.findById(_id).then(ret=>res.json(ret)).catch(err=>{
+        console.log(err);
+        res.json({status:404,message:'user not exist', parents: ['not found']})
+    })
+});
 
 
 // create new row parent
@@ -49,22 +60,10 @@ route.post('/add-parent', (req, res)=>{
     Babysitter.updateOne({ phone: userPhone}, {$push:{parents: parent}})
     .then(parent=>res.json(parent))
     .catch(err=>console.log(err))
- 
 })
 
 
 
-
-// test to find oun by phone 
-
-route.get("/user", (req, res)=>{
-
-    Babysitter.find({ phone: "2222"})
-    .then((baby)=>{
-        res.json(baby)
-    }).catch(err=>console.log(err))
-
-})
 
 
 
@@ -114,4 +113,4 @@ route.post('/babysitter/create-user', (req, res) => {
 
 
 
-module.exports = {route, route2, viewRoute}
+module.exports = {route, viewRoute}

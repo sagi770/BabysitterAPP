@@ -10,27 +10,30 @@ class Main extends React.Component{
     super(props);
     
     this.state={
-      user: {
-        parents: []
-      }
+      user: []
     }
     this.url = "http://localhost:4000"
-
+ 
   }
 
   componentDidMount() {
-    axios.get(this.url+'/:id')
-    .then(user=>{
-      console.log(user.data[0])
-      this.setState({user: user.data[0]})
+  //TODO:get the user ID from login OR data storage - > the right way...
+  const user_id = '5d2da1364a5f0e1d1092a48f';
+
+
+    axios.get(this.url+'/'+user_id).then(user=>{
+      // console.log(user.data.parents);
+      this.setState({user: user.data.parents})
     })
   }
   
-
+  
   render(){
+
+
   return (<div className="screenExample">
               <LinkSetting/>
-              <ParentList parents={this.state.user.parents}/>
+              <ParentList parents={this.state.user}/>
               <AddParentBtn/>
           </div>);
 }

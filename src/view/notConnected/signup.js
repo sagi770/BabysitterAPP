@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
+//TODO:missing error handel when user (by phone) is already exist 
+//inform the client to login
 class Signup extends React.Component {
     constructor(props){
     super(props);

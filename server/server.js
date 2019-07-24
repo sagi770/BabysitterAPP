@@ -1,13 +1,24 @@
+require('custom-env').env()
 const express            = require("express");
 const cors               = require("cors");
 const bodyParser         = require("body-parser");
 const mongoose           = require("mongoose");
-const port               = 4000;
+const port               = process.env.PORT;
 const app                = express();
-const { route, route2, viewRoute }  = require('./model/router')
+const { route, viewRoute }  = require('./model/router')
+
+const debug = false;
 
 
-mongoose.connect('mongodb://localhost:27017/babysitter', {useNewUrlParser: true})
+if(debug){
+    connectionString = process.env.DEBUG_CONNECTIONS_DB
+}
+else{
+    connectionString = process.env.PRODUCTION_CONNECTIONS_DB
+}
+
+
+mongoose.connect(connectionString, {useNewUrlParser: true})
 .then(() => {
     console.log('Connect to babysitter');
 })
@@ -22,7 +33,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(route)
-app.use(route2)
 app.use(viewRoute)
 
 

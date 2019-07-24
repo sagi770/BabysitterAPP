@@ -11,7 +11,7 @@ const ParentList = ({parents}) => {
     //                       {key: "6",name: "example 6", link: "/6"}];
 
    let list = parents.map((parent)=>{
-       return<Parent key={parent.key} parent ={parent}  />
+       return<Parent key={parent._id} parent ={parent}  />
    })
 //    console.log(list)
 

@@ -17,7 +17,7 @@ class Navigation extends Component {
         return ( 
             <select onChange={this.onChange}>
                 <option value="">Choose one..</option>
-                <option value="">Parent List</option>
+                <option value=":user_id">Parent List</option>
                 <option value="add-parent">Add Parent</option>
                 <option value="add-parent-row">Add Parent Row</option>
                 <option value="home-page">Home page</option>
