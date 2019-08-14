@@ -15,8 +15,8 @@ class AddParent extends React.Component {
     this.addParent = this.addParent.bind(this);
 }
 addParent(parent){
-  const User_id = this.props.match.params.id
-  console.log(User_id,parent)
+  parent.user_id = "5d53fd3ad7a15c35989e7d72"
+  console.log(parent.user_id ,parent)
 
     axios.post(this.url+ "/add-parent", {parent})
     .then((res) => {

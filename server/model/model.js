@@ -17,22 +17,21 @@ const babysitterSchema = new Schema({
                 return validator.blacklist(value)
             },
         },
-        
+        parents:Array,
+        // ?????????-->
         pricePerHour: String,
         setting:{
             hourPrice: String,
         },
-        parents: [{
-            name : String,
-            phone : String,
-            password: String,
-            hourList: [{
-                startDate: String,
-                endDate: String,
-                isPaid: Boolean,
-                isDelete: Boolean,
-            }],
+        // ????????<--
+        
+        hourList: [{
+            startDate: String,
+            endDate: String,
+            isPaid: Boolean,
+            isDelete: Boolean,
         }],
+
 })
 
 
@@ -40,15 +39,16 @@ const babysitterSchema = new Schema({
 
 const ParentSchema = new Schema({
     name : String,
-    phone : String,
+    phone:{
+        type: String,
+        // required: true,
+        // unique: true,
+        // lowercase: true,
+        validate: (value) => {
+            return validator.blacklist(value)
+        },
+    },
     password: String,
-    hourList: [{
-        date: String,
-        startDate: String,
-        endDate: String,
-        isPaid: Boolean,
-        isDelete: Boolean,
-    }],
 })
 
 
@@ -62,12 +62,16 @@ const HourListSchema = new Schema({
         isDelete: Boolean,
     })
 
+const parentIdSchema = new Schema({
+    ParentId: String,
+})
 
 
 const Babysitter = mongoose.model('User', babysitterSchema);
+const ParentId = mongoose.model('ParentId', parentIdSchema);
 const HourList = mongoose.model('Hour', HourListSchema);
 const Parent = mongoose.model('Parent', ParentSchema);
 
 module.exports = {
-    Babysitter, Parent, HourList
+    Babysitter, Parent, HourList, ParentId,
 }

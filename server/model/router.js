@@ -1,18 +1,36 @@
 require('custom-env').env()
 const express                           = require('express');
 const route                             = express.Router()
-const { Babysitter, Parent, HourList }  = require('./model');
-const { viewRoute  }                        = require('./viewRouter');
+const { Babysitter, Parent,
+        HourList, ParentId, }           = require('./model');
+const { viewRoute  }                    = require('./viewRouter');
 
 
 
 // get user by ID 
 route.get("/:user_id", (req, res)=>{
-    const _id = req.params.user_id; 
-    Babysitter.findById(_id).then(ret=>res.json(ret)).catch(err=>{
+    const _id = req.params.user_id;
+     
+    Babysitter.findById(_id).then(result=>{
+         let wait = result.parents.map( itm => {
+            // console.log(itm)
+            let parent = Parent.findById(itm.ParentId).then( parent =>{
+                            result.parents.push(parent) 
+                            result.parents.splice(0, 1)
+            })
+
+            return parent
+        });
+        Promise.all(wait).then(() => {
+            res.json({result})
+        });
+    })
+    .catch(err=>{
         console.log(err);
         res.json({status:404,message:'user not exist', parents: ['not found']})
     })
+   
+
 });
 
 
@@ -32,8 +50,8 @@ route.post('/add-parent-row', (req, res)=>{
         isDelete: false,
     })
     
-    Babysitter.updateOne({ "parent.$.phone": userPhone},
-     {$push:{"parents.hourList": hour}}
+    Babysitter.updateOne({ phone: userPhone},
+     {$push:{ hourList: hour}}
      )
     .then(parent=>{
         console.log(parent)
@@ -47,19 +65,36 @@ route.post('/add-parent-row', (req, res)=>{
 
 route.post('/add-parent', (req, res)=>{
     //////////// wear need to think about the wey the we ar get this param
-    let userPhone = "08770770"
-    const { name, phone, } = req.body.parent;
+    const { name, phone, user_id, } = req.body.parent;
     
     const parent = new Parent({
         name,
         phone,
-
         password: String,
-        hourList: [],
     })
-    Babysitter.updateOne({ phone: userPhone}, {$push:{parents: parent}})
-    .then(parent=>res.json(parent))
-    .catch(err=>console.log(err))
+    Babysitter.findByIdAndUpdate(user_id).then(user=>{
+        
+    })
+    
+    parent.save()
+    .then(parent => {
+        console.log(parent);
+        const parentId = new ParentId({
+            ParentId: parent._id
+        });
+        console.log("user_id",user_id);
+        console.log("parentId",parentId);
+        Babysitter.findByIdAndUpdate(user_id,
+                {$push:{ parents: parentId }},
+                {useFindAndModify: false}
+                ).then(user=>{
+                    console.log("user:",user)
+            })
+            res.json(parent);
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({ message: 'Error on add new parent' })
+        });
 })
 
 
@@ -96,7 +131,8 @@ route.post('/babysitter/create-user', (req, res) => {
         setting:{
             hourPrice: String,
         },
-        parents: []
+        parents: Array,
+        hourList: [],
         
     });
 
@@ -104,7 +140,6 @@ route.post('/babysitter/create-user', (req, res) => {
         .then(babysitter => {
             res.json(babysitter);
         }).catch(err => {
-            console.error(err);
             console.log(err);
             res.status(500).json({ message: 'Error on add new babysitter' })
         });

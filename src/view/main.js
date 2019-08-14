@@ -18,12 +18,12 @@ class Main extends React.Component{
 
   componentDidMount() {
   //TODO:get the user ID from login OR data storage - > the right way...
-  const user_id = '5d2da1364a5f0e1d1092a48f';
+  const user_id = '5d53fd3ad7a15c35989e7d72';
 
 
     axios.get(this.url+'/'+user_id).then(user=>{
-      // console.log(user.data.parents);
-      this.setState({user: user.data.parents})
+      console.log(user.data.result.parents);
+      this.setState({user: user.data.result.parents})
     })
   }
   

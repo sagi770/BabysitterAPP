@@ -23,8 +23,8 @@ console.log(newUser)
 
 this.setState({newUser});
 axios.post(this.url + '/babysitter/create-user', { newUser })
-.then(()=>{
-    console.log(newUser)
+.then(user=>{
+    console.log(user)
 })
 
 }
