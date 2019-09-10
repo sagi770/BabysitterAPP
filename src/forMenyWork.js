@@ -11,6 +11,7 @@ import ForgetPassword from './view/notConnected/forgetPassword';
 import ParentView from './view/parentView';
 import AddRowForParent from './view/input/addRowForParent';
 import AddParent from './view/input/addParent';
+import MyPicker from './components/picker';
 
 const ForMenyToWork = () => {
     return (<div>
@@ -20,7 +21,7 @@ const ForMenyToWork = () => {
                 <Signup/>
                 <Login/>
                 <ForgetPassword/>
-
+<MyPicker/>
                 <h1>מחובר</h1>
                 <Main/>
                 <p>להוסיף הורה</p>
