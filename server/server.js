@@ -7,7 +7,9 @@ mongoose.Promise         = global.Promise;
 const port               = process.env.PORT;
 const app                = express();
 const { route,  user }  = require('./model/router')
-
+const path                  = require('path');
+const http                 = require('http');
+const httpServer        = http.createServer(app)
 const debug = true;
 let connectionString;
 
@@ -31,12 +33,17 @@ mongoose.connect(connectionString , {useNewUrlParser: true})
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.use(route)
 app.use(user)
 
 
+app.get('/welcome', (req, res) => { 
+    // res.send("hy")
+    res.sendFile(path.resolve('../build/index.html'));  
+})
 
-app.listen(port, ()=>{
+httpServer.listen(port, ()=>{
     console.log('server up on ' + port);
 })

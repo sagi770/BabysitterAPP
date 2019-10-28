@@ -24,7 +24,7 @@ componentDidMount(){
     const token = localStorage.token
     const decoded = jwt_decode(token)
   console.log(decoded)
-    axios.get(`http://localhost:4000/parentHour/${decoded._id}/${id}`)
+    axios.get(`/parentHour/${decoded._id}/${id}`)
     .then(rows=>{
         console.log(rows.data)
         this.setState({parentRows: rows.data})

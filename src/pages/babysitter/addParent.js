@@ -33,7 +33,7 @@ class AddParent extends React.Component{
     const decoded = jwt_decode(token)
 
     
-    axios.post('http://localhost:4000/add_parent', {
+    axios.post('/add_parent', {
         name: ev.name,
         phone: ev.phone,
         user_id: decoded._id

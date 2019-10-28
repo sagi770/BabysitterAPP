@@ -31,7 +31,7 @@ class AddHour extends React.Component{
     const token = localStorage.token
     const decoded = jwt_decode(token)
     
-    axios.post('http://localhost:4000/add_hour', {
+    axios.post('/add_hour', {
       from: ev.from,
       to: ev.to,
       total: "total",

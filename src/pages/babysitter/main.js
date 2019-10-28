@@ -29,7 +29,7 @@ class Main extends React.Component{
        name: decoded.name,
         id: decoded._id
       })
-      axios.get(`http://localhost:4000/parent_list/${decoded._id}`)
+      axios.get(`/parent_list/${decoded._id}`)
       .then(res => {
         console.log(res)
 

@@ -259,10 +259,10 @@ route.get("/parentHour/:User_id/:parent_id", (req, res) => {
             // let wait = 
         })
     })
-    
+   
     
     // get user by ID 
-    route.get("/:user_id", (req, res)=>{
+    route.get("/user/:user_id", (req, res)=>{
         const _id = req.params.user_id;
          
         Babysitter.findById(_id).then(result=>{
