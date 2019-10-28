@@ -1,0 +1,17 @@
+@import "./css/header.css";
+@import "./css/page.css";
+@import "./css/main.css";
+@import "./css/hours.css";
+
+.computer {
+    display: none;
+}
+/* @media script, (min-width: 770px) {
+    .application {
+        display: none;
+    }
+
+    .computer {
+        display: block;
+    }
+} */

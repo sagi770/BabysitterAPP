@@ -1,0 +1,26 @@
+
+.header {
+    padding: 0;
+    width: 100%;
+    height: 20vw;
+    color:white;
+    margin: 0;
+}
+
+
+.header_title {
+    float: left;
+    text-align: center;
+    width: 60vw;
+    /* background-color: rgb(76, 43, 226); */
+    height: 20vw;
+    font-size: 4vw;
+}
+
+.imgTitle {
+    padding: 3vw;
+    float: left;
+    width: 14vw;
+    height: 14vw;
+    /* background-color: aliceblue; */
+}

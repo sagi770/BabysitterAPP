@@ -1,9 +1,7 @@
-require('custom-env').env()
+                                          require('custom-env').env()
 const express                           = require('express');
-const user                             = express.Router()
-const { Babysitter, Parent,
-        HourList, ParentId }            = require('./model');
-const { viewRoute, }                    = require('./viewRouter');
+const user                              = express.Router()
+const { Babysitter }                    = require('./model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -18,19 +16,20 @@ process.env.SECRET_KEY = 'secret'
 
 // create a user name
 user.post('/babysitter/create-user', (req, res) => {
-    let {name, phone, password} = req.body.newUser
+    let {name, phone, password} = req.body
     
     const babysitter = new Babysitter({
-        name, phone, password,
-        
+        name,
+        password,
+        phone,
+        parents:[],
         pricePerHour: String,
         setting:{
             hourPrice: String,
         },
-        parents: Array,
-        hourList: [],
         
-    });
+
+});
     
     Babysitter.findOne({
         phone
@@ -54,48 +53,57 @@ user.post('/babysitter/create-user', (req, res) => {
              res.json({error: "User already exists"})
         }
     })
-    .catch(err=>{
-        res.send('error: ', err)
+    .catch(err => {
+        console.error(err);
+        console.log(err);
+        res.status(500).json({ message: 'Error on create-user' })
     })
 });
-        
-        user.post("/login", (req, res)=>{
-            Babysitter.findOne({
-               phone: req.body.phone
-            })
-            .then(user => {
-                if(user) {
-                    if(bcrypt.compareSync(req.body.password, user.password)) {
-                        const payload = {
-                            _id: user._id,
-                            name: user.name,
-                            phone: user.phone,
-                        }
-                        console.log("hy")
-                        let token = jwt.sign(payload, process.env.SECRET_KEY, {
-                            expiresIn: 1440
-                        })
-                        console.log("res.send(token)")
-                        res.send(token)
-                    }else{
-                        console.log("res.send({error: 1User does not exist})")
+      
 
-                        res.json({error: "User does not exist"})
-                    }
-                }else{
-                    console.log("res.send({error: User does not exist})")
 
-                    res.json({error: "User does not exist"})
+// login
+user.post("/login", (req, res)=>{
+    console.log(req.body)
+    Babysitter.findOne({
+        phone:  req.body.phone
+    })
+    .then(user => {
+        if(user) {
+            if(bcrypt.compareSync(req.body.password, user.password)) {
+                const payload = {
+                    _id: user._id,
+                    name: user.name,
+                    phone: user.phone,
                 }
-        
-            })
-            .catch(err => {
-                console.log("res.send(err)")
+                console.log("hy")
+                let token = jwt.sign(payload, process.env.SECRET_KEY, {
+                    expiresIn: 1440
+                })
+                console.log("res.send(token)")
+                res.send(token)
+            }else{
+                console.log("res.send({error: 1User does not exist})")
 
-                res.send( err)
-            })
-        })
+                res.json({error: "User does not exist"})
+            }
+        }else{
+            console.log("res.send({error: User does not exist})")
+
+            res.json({error: "User does not exist"})
+        }
+
+    })
+    .catch(err => {
+        console.error(err);
+        console.log(err);
+        res.status(500).json({ message: "Error on login" })
+    })
+})
     
+
+
+// profile
 user.get("/profile", (req, res) => {
     let decoded = jwt.verify(req.headers["authorization"], process.env.SECRET_KEY)
 
@@ -110,8 +118,12 @@ user.get("/profile", (req, res) => {
         }
     })
     .catch(err => {
-        res.send(err)
+        console.error(err);
+        console.log(err);
+        res.status(500).json({ message: "Error on get profile" })
     })
 })    
-        module.exports = { user }
+
+
+module.exports = { user }
     

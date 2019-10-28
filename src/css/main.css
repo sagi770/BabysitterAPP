@@ -1,0 +1,27 @@
+.parList {
+    width: 90%;
+    margin: 5vw auto;
+
+}
+.parIcon{
+    background-color: white;
+    overflow: initial;
+    width: 86%;
+    box-shadow: 1px 3px 3px #acacac;
+    /* border: 2px solid black; */
+    border-radius: 15px;
+    text-align: left;
+    margin: 3%;
+    padding: 5%;
+    float: left;
+    font-size: 6vw;
+  }
+.sum{
+    float: right;
+    color: #85931e;
+
+}
+.ParentsTotal {
+    color: #85931e;
+    float: right;
+}

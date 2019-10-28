@@ -6,7 +6,7 @@ const mongoose           = require("mongoose");
 mongoose.Promise         = global.Promise;
 const port               = process.env.PORT;
 const app                = express();
-const { route, viewRoute }  = require('./model/router')
+const { route,  user }  = require('./model/router')
 
 const debug = true;
 let connectionString;
@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(route)
-app.use(viewRoute)
+app.use(user)
 
 
 

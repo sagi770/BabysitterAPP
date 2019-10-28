@@ -1,49 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route /*, Link */} from "react-router-dom";
-import Main from './view/main';
-import testAJAX from './components/Utilities/testAJAX';
-import Navigation from './components/Utilities/navigation';
-import MainNotConnected from './view/notConnected/main';
-import Login from './view/notConnected/login';
-import Signup from './view/notConnected/signup';
-import Setting from './view/input/setting';
-import addParent from './view/input/addParent';
+import React, { useState } from 'react';
+import './App.css';
+import test from "./images/test.png"
+import Header from './components/Header';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Main_not_connected from './pages/not_connected/Main';
+import Rout from './components/rote';
 
-import ForgetPassword from './view/notConnected/forgetPassword';
+const App = () => {
+  const [title, setTitle] = useState("title")
 
-//maybe we need to move this components...
-import ParentView from './view/parentView';
-import AddRowForParent from './view/input/addRowForParent';
-import ForMenyToWork from './forMenyWork';
-
-// import TempPager from './components/TempPager';
-
-function App() {
-    return (<div>
-                <Router>
-                    <ForMenyToWork/>
-                    {/* <Navigation/> */}
-                
-                    
-                    {/* Test ajax call.. */}
-                    {/* <Route exact path="/ajax" component={testAJAX} /> */}
-
-{/* TODO:add Setting component */}
-
-                    {/* <Route exact path="/:user_id" component={Main} />
-                    <Route path="/add-parent" component={addParent} />
-                    <Route path="/add-parent-row" component={AddRowForParent} />
-                    <Route path="/:user_id/parent/:parent_id" component={ParentView} />
-                    <Route path="/:user_id/setting" component={Setting} />
-                     */}
-                    {/* NOT CONNECTED */}
-                    {/* <Route exact path="/" component={MainNotConnected} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/forget-password" component={ForgetPassword} /> */}
-              
-                </Router>
-            </div>);
+  return <Router className="App">
+    <Rout/>
+      {/* <Main_not_connected/> */}
+    </Router>
 }
 
 export default App;
